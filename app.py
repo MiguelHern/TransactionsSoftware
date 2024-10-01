@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
-from models import db, User, Library  # Asegúrate de importar todos los modelos
+from models import db, User, Library  
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -42,7 +42,7 @@ def manage_users():
 
 @app.route('/users/<int:user_id>', methods=['POST'])
 def edit_user(user_id):
-    # Aquí puedes manejar tanto la actualización como la eliminación
+    
     if request.form['_method'] == 'PUT':
         user = User.query.get(user_id)
         user.user_name = request.form['user_name']
